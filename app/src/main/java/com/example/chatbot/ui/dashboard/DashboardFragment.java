@@ -1,5 +1,6 @@
 package com.example.chatbot.ui.dashboard;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +12,8 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.chatbot.Category;
+import com.example.chatbot.AskQuestionActivity;
+import com.example.chatbot.firebase.Category;
 import com.example.chatbot.adapters.CategoryAdapter;
 import com.example.chatbot.databinding.FragmentDashboardBinding;
 import com.google.firebase.database.DataSnapshot;
@@ -54,8 +56,10 @@ public class DashboardFragment extends Fragment {
         rvCategories.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new CategoryAdapter(getContext(), categories, new CategoryAdapter.OnCategoryClickListener() {
             @Override
-            public void onStateClick(Category chatId) {
-
+            public void onStateClick(Category category) {
+                Intent intent = new Intent(getActivity(), AskQuestionActivity.class);
+                intent.putExtra(Category.INTENT_CATEGORY, category);
+                startActivity(intent);
             }
         });
         rvCategories.setAdapter(adapter);

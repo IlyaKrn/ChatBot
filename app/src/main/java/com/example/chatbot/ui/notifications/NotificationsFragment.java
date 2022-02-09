@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.chatbot.Question;
+import com.example.chatbot.firebase.Question;
 import com.example.chatbot.adapters.QuestionAdapter;
 import com.example.chatbot.databinding.FragmentNotificationsBinding;
 import com.google.firebase.database.DataSnapshot;

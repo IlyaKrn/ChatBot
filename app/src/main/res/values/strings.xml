@@ -7,4 +7,7 @@
     <string name="i_is_admin">Я администратор</string>
     <string name="select_category">Выбрите категорию</string>
     <string name="often_questions">Часто задаваемые\nвопросы</string>
+    <string name="your_question">Ваш вопрос</string>
+    <string name="search_answer">Найти ответ</string>
+    <string name="maybe_you_mean">Возможно, вы имели ввиду</string>
 </resources>

@@ -1,9 +1,12 @@
-package com.example.chatbot;
+package com.example.chatbot.firebase;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class Category {
+import java.io.Serializable;
+
+public class Category implements Serializable {
+    public static final String INTENT_CATEGORY = "intent_category";
     private static final String CATEGORIES = "categories";
     public String name;
 

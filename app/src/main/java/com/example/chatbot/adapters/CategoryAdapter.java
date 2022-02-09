@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.chatbot.Category;
+import com.example.chatbot.firebase.Category;
 import com.example.chatbot.R;
 
 import java.util.ArrayList;

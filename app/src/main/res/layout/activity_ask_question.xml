@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AskQuestionActivity"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarMain"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/tool_bar"
+        android:contentInsetStart="0dp"
+        android:contentInsetLeft="0dp"
+        android:elevation="4dp"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp">
+
+        <ImageButton
+            android:id="@+id/bt_back"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:srcCompat="?attr/actionModeCloseDrawable"
+            android:onClick="onClose"
+            tools:ignore="OnClick"
+            android:layout_margin="3dp"
+            android:background="@drawable/round_corner_button"/>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <EditText
+        android:id="@+id/et_question"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:layout_marginTop="10dp"
+        android:hint="@string/your_question"
+        android:textSize="30sp"
+        android:layout_marginLeft="10dp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/bt_search_answer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="@drawable/round_corner_button"
+        android:layout_marginTop="10dp"
+        android:text="@string/search_answer"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_marginHorizontal="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:gravity="left"
+        android:id="@+id/tv_maybe"
+        android:visibility="gone"
+        android:layout_marginTop="10dp"
+        android:text="@string/maybe_you_mean"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:padding="10dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:id="@+id/rv_answer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+
+</LinearLayout>

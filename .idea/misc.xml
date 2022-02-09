@@ -6,7 +6,9 @@
         <entry key="..\:/Users/USER/AndroidStudioProjects/ChatBot/app/src/main/res/drawable/round_corner_button.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/ChatBot/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/ChatBot/app/src/main/res/layout/fragment_dashboard.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/ChatBot/app/src/main/res/layout/fragment_notifications.xml" value="0.35104166666666664" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/ChatBot/app/src/main/res/layout/item_category_list.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/ChatBot/app/src/main/res/layout/item_question_list.xml" value="0.35104166666666664" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/ChatBot/app/src/main/res/menu/popup_menu_main.xml" value="0.35104166666666664" />
       </map>
     </option>

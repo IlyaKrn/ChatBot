@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.chatbot.Category;
-import com.example.chatbot.CategoryAdapter;
+import com.example.chatbot.adapters.CategoryAdapter;
 import com.example.chatbot.databinding.FragmentDashboardBinding;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -52,7 +52,7 @@ public class DashboardFragment extends Fragment {
     private void init(){
         rvCategories = binding.rvCategories;
         rvCategories.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new CategoryAdapter(getContext(), categories, new CategoryAdapter.OnStateClickListener() {
+        adapter = new CategoryAdapter(getContext(), categories, new CategoryAdapter.OnCategoryClickListener() {
             @Override
             public void onStateClick(Category chatId) {
 

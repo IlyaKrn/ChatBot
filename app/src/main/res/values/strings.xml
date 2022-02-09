@@ -6,4 +6,5 @@
     <string name="news">Новости</string>
     <string name="i_is_admin">Я администратор</string>
     <string name="select_category">Выбрите категорию</string>
+    <string name="often_questions">Часто задаваемые\nвопросы</string>
 </resources>

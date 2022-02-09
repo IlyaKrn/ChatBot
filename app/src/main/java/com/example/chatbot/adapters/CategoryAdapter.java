@@ -1,8 +1,7 @@
-package com.example.chatbot;
+package com.example.chatbot.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,20 +10,19 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.chatbot.Category;
+import com.example.chatbot.R;
+
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CategoryHolder> {
 
-    private final OnStateClickListener onClickListener;
+    private OnCategoryClickListener onClickListener;
     private final Context context;
-    private final ArrayList<Category> categories;
-
-    private Map<String, Bitmap> savedIcons = new HashMap<>();
+    private ArrayList<Category> categories;
 
 
-    public CategoryAdapter(Context context, ArrayList<Category> categories, OnStateClickListener onClickListener) {
+    public CategoryAdapter(Context context, ArrayList<Category> categories, OnCategoryClickListener onClickListener) {
         this.context = context;
         this.categories = categories;
         this.onClickListener = onClickListener;
@@ -65,8 +63,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         return categories.size();
     }
 
-    public interface OnStateClickListener{
-        void onStateClick(Category chatId);
+    public interface OnCategoryClickListener {
+        void onStateClick(Category category);
     }
 
     class CategoryHolder extends RecyclerView.ViewHolder{

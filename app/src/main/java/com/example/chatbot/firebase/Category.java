@@ -8,12 +8,17 @@ import java.util.ArrayList;
 
 public class Category implements Serializable {
     public static final String INTENT_CATEGORY = "intent_category";
-    private static final String CATEGORIES = "categories";
+    public static final String CATEGORIES = "categories";
 
     public String name;
-    public ArrayList<Question> questions;
+    public ArrayList<Question> questions = new ArrayList<>();
 
     public Category() {
+    }
+
+    public Category(String name, ArrayList<Question> questions) {
+        this.name = name;
+        this.questions = questions;
     }
 
     public static DatabaseReference getDatabase(){

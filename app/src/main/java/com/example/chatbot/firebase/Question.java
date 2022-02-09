@@ -16,6 +16,9 @@ public class Question implements Serializable {
         this.answer = answer;
     }
 
+    public Question() {
+    }
+
     public static DatabaseReference getOftenQuestions(){
         return FirebaseDatabase.getInstance().getReference(OFTEN_QUESTIONS);
     }

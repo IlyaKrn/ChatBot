@@ -1,5 +1,6 @@
 package com.example.chatbot;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -52,7 +53,8 @@ public class MainActivity extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), "news", Toast.LENGTH_SHORT).show();
                                 break;
                             case R.id.i_is_admin:
-                                Toast.makeText(getApplicationContext(), "admin", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(MainActivity.this, AuthActivity.class);
+                                startActivity(intent);
                                 break;
                         }
                         return false;

@@ -1,5 +1,6 @@
 package com.example.chatbot;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,11 +12,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.chatbot.adapters.QuestionAdapter;
 import com.example.chatbot.firebase.Category;
 import com.example.chatbot.firebase.Question;
+import com.example.chatbot.ui.DialogGoToChat;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -29,7 +33,9 @@ public class AskQuestionActivity extends AppCompatActivity {
     private RecyclerView rvAnswer;
     private TextView tvMaybe;
     private QuestionAdapter adapter;
-    private ArrayList<Question> questions = new ArrayList<>();
+    private ArrayList<Question> searchQuestions = new ArrayList<>();
+
+    private ValueEventListener questionsListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,13 +54,14 @@ public class AskQuestionActivity extends AppCompatActivity {
         btSearchAnswer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "search", Toast.LENGTH_SHORT).show();
                 tvMaybe.setVisibility(View.VISIBLE);
-                questions.add(new Question("111", "1111"));
-                questions.add(new Question("222", "2222"));
-                questions.add(new Question("333", "3333"));
-                questions.add(new Question("444", "4444"));
+                searchQuestions = category.questions;
                 adapter.notifyDataSetChanged();
+                /*
+                DialogGoToChat dialogGoToChat = new DialogGoToChat(AskQuestionActivity.this);
+                dialogGoToChat.create(R.id.fragmentContainerView);
+
+                 */
             }
         });
 
@@ -69,7 +76,7 @@ public class AskQuestionActivity extends AppCompatActivity {
         tvMaybe = findViewById(R.id.tv_maybe);
         rvAnswer = findViewById(R.id.rv_answer);
         rvAnswer.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new QuestionAdapter(this, questions, new QuestionAdapter.OnQuestionClickListener() {
+        adapter = new QuestionAdapter(this, searchQuestions, new QuestionAdapter.OnQuestionClickListener() {
             @Override
             public void onStateClick(Question question) {
                 Intent intent = new Intent(AskQuestionActivity.this, AnswerActivity.class);

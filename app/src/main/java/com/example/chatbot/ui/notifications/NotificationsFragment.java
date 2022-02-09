@@ -1,5 +1,6 @@
 package com.example.chatbot.ui.notifications;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,8 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.chatbot.AnswerActivity;
+import com.example.chatbot.AskQuestionActivity;
 import com.example.chatbot.firebase.Question;
 import com.example.chatbot.adapters.QuestionAdapter;
 import com.example.chatbot.databinding.FragmentNotificationsBinding;
@@ -44,7 +47,9 @@ public class NotificationsFragment extends Fragment {
         adapter = new QuestionAdapter(getContext(), questions, new QuestionAdapter.OnQuestionClickListener() {
             @Override
             public void onStateClick(Question question) {
-
+                Intent intent = new Intent(getActivity(), AnswerActivity.class);
+                intent.putExtra(Question.INTENT_QUESTION, question);
+                startActivity(intent);
             }
         });
         rvQuestions.setAdapter(adapter);

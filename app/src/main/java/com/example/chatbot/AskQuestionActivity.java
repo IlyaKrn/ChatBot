@@ -2,17 +2,20 @@ package com.example.chatbot;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.PopupMenu;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.chatbot.adapters.QuestionAdapter;
 import com.example.chatbot.firebase.Category;
@@ -38,6 +41,7 @@ public class AskQuestionActivity extends AppCompatActivity {
     private ArrayList<Question> searchQuestions = new ArrayList<>();
 
     private ValueEventListener questionsListener;
+    private ImageButton btMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,10 +80,35 @@ public class AskQuestionActivity extends AppCompatActivity {
             }
         });
 
+        btMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popup = new PopupMenu(AskQuestionActivity.this, view);
+                popup.inflate(R.menu.popup_menu_main);
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        switch (menuItem.getItemId()) {
+                            case R.id.news:
+                                Toast.makeText(getApplicationContext(), "news", Toast.LENGTH_SHORT).show();
+                                break;
+                            case R.id.i_is_admin:
+                                Intent intent = new Intent(AskQuestionActivity.this, AdminLoginActivity.class);
+                                startActivity(intent);
+                                break;
+                        }
+                        return false;
+                    }
+                });
+                popup.show();
+            }
+        });
+
 
     }
 
     private void init() {
+        btMenu = findViewById(R.id.bt_menu);
         category = (Category) getIntent().getSerializableExtra(Category.INTENT_CATEGORY);
         btBack = findViewById(R.id.bt_back);
         btSearchAnswer = findViewById(R.id.bt_search_answer);

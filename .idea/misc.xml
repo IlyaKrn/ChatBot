@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/1/AndroidStudioProjects/ChatBot/app/src/main/res/drawable/ic_categories.xml" value="0.2546875" />
+        <entry key="..\:/Users/1/AndroidStudioProjects/ChatBot/app/src/main/res/drawable/ic_faq.xml" value="0.2546875" />
+        <entry key="..\:/Users/1/AndroidStudioProjects/ChatBot/app/src/main/res/drawable/ic_image2vector_2.xml" value="0.2546875" />
         <entry key="..\:/Users/1/AndroidStudioProjects/ChatBot/app/src/main/res/drawable/round_corner_button.xml" value="0.2703125" />
         <entry key="..\:/Users/1/AndroidStudioProjects/ChatBot/app/src/main/res/layout/activity_admin_login.xml" value="0.23550724637681159" />
         <entry key="..\:/Users/1/AndroidStudioProjects/ChatBot/app/src/main/res/layout/activity_answer.xml" value="0.22916666666666666" />
@@ -34,7 +37,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_14_PREVIEW" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

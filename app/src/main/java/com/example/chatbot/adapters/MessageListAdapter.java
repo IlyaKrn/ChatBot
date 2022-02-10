@@ -22,11 +22,11 @@ import java.util.Map;
 
 public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.MessageHolder> {
 
-    private final ArrayList<Message> messages;
+    private final ArrayList<String> messages;
     private final Context context;
     private final boolean isUser;
 
-    public MessageListAdapter(Context context, ArrayList<Message> messages, boolean isUser, OnStateClickListener onClickListener) {
+    public MessageListAdapter(Context context, ArrayList<String> messages, boolean isUser, OnStateClickListener onClickListener) {
         this.context = context;
         this.messages = messages;
         this.isUser = isUser;
@@ -75,14 +75,10 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
             notMy_itemBody = this.itemView.findViewById(R.id.not_my_item_body);
 
             my_itemBody = this.itemView.findViewById(R.id.my_item_body);
-            my_tvMessage = this.itemView.findViewById(R.id.my_tv_message);
         }
 
         public void bind(int listIndex){
-            m = messages.get(listIndex);
-            if (m.isAdmin){
-
-            }
+            notMy_tvMessage.setText(messages.get(listIndex));
         }
         private void showNotMyMessage(){
             notMy_itemBody.setVisibility(View.VISIBLE);

@@ -56,7 +56,7 @@ public class NotificationsFragment extends Fragment {
         rvQuestions.setAdapter(adapter);
 
         questions.clear();
-        questions.addAll(Database.oftenQuestions);
+        questions.addAll(Database.oftenQuestions.questions);
         adapter.notifyDataSetChanged();
 
     }

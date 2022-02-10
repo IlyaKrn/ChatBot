@@ -40,15 +40,17 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        Database.oftenQuestions.add(new Question("sdds", "null"));
-        Database.oftenQuestions.add(new Question("sdds", "null"));
-        Database.oftenQuestions.add(new Question("sdds", "null"));
-        Database.oftenQuestions.add(new Question("sdds", "null"));
+        Database.oftenQuestions.questions.add(new Question("sdds", "null"));
+        Database.oftenQuestions.questions.add(new Question("sdds", "null"));
+        Database.oftenQuestions.questions.add(new Question("sdds", "null"));
+        Database.oftenQuestions.questions.add(new Question("sdds", "null"));
 
-        Database.categories.add(new Category("sdds", Database.oftenQuestions));
-        Database.categories.add(new Category("sdds", Database.oftenQuestions));
-        Database.categories.add(new Category("sdds", Database.oftenQuestions));
-        Database.categories.add(new Category("sdds", Database.oftenQuestions));
+        Database.categories.add(new Category("sdds", Database.oftenQuestions.questions));
+        Database.categories.add(new Category("sdds", Database.oftenQuestions.questions));
+        Database.categories.add(new Category("sdds", Database.oftenQuestions.questions));
+        Database.categories.add(new Category("sdds", Database.oftenQuestions.questions));
+
+        Database.categories.add(new Category("частые вопросы", Database.oftenQuestions.questions));
 
         Objects.requireNonNull(getSupportActionBar()).hide();
         binding = ActivityMainBinding.inflate(getLayoutInflater());

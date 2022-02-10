@@ -62,7 +62,7 @@ public class RefactorCategoriesActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(RefactorCategoriesActivity.this, RefactorSelectCategory.class);
-                intent.putExtra(Category.INTENT_CATEGORY, new Category("often_questions", Database.oftenQuestions));
+                intent.putExtra(Category.INTENT_CATEGORY, new Category("often_questions", Database.oftenQuestions.questions));
                 startActivity(intent);
             }
         });

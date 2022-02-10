@@ -61,7 +61,7 @@ public class ChatActivity extends AppCompatActivity {
         btSend = findViewById(R.id.bt_send);
         btClose = findViewById(R.id.bt_back);
         rvMessages.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new MessageListAdapter(this, messageList, true, new MessageListAdapter.OnStateClickListener() {
+        adapter = new MessageListAdapter(this, Database.messages, true, new MessageListAdapter.OnStateClickListener() {
             @Override
             public void onStateClick(int messagePosition) {
 
@@ -73,17 +73,9 @@ public class ChatActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (etSend.getText().toString().length() > 0) {
-                    String massege = etSend.getText().toString();
-                    messageList.add(new Message(massege, false));
-                    try {
-                        adapter.notifyDataSetChanged();
-                    } catch (Exception e){
-
-                    }
-
+                    Database.messages.add(etSend.getText().toString());
+                    adapter.notifyDataSetChanged();
                     etSend.setText(NULL_MESSAGE);
-
-
                 }
             }
         });
@@ -95,6 +87,12 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        Database.messages.clear();
+        super.onDestroy();
     }
 
     private void scrollMessages(){

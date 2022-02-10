@@ -19,6 +19,9 @@ public class Category implements Serializable {
     public Category(String name, ArrayList<Question> questions) {
         this.name = name;
         this.questions = questions;
+        if (this.questions == null){
+            this.questions = new ArrayList<>();
+        }
     }
 
     public static DatabaseReference getDatabase(){

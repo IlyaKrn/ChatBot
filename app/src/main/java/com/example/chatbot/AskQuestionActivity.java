@@ -58,18 +58,21 @@ public class AskQuestionActivity extends AppCompatActivity {
             public void onClick(View view) {
                 tvMaybe.setVisibility(View.VISIBLE);
                 searchQuestions.clear();
-                searchQuestions.addAll(category.questions);
-
-                for (Question q : searchQuestions){
-                    Log.e(q.answer, q.question);
+                searchQuestions.clear();
+                final String quest = etQuestion.getText().toString();
+                for (Question q : category.questions){
+                    if (Utils.compare(q.question, quest)){
+                        searchQuestions.add(q);
+                    }
                 }
-
-                adapter.notifyDataSetChanged();
-                /*
-                DialogGoToChat dialogGoToChat = new DialogGoToChat(AskQuestionActivity.this);
-                dialogGoToChat.create(R.id.fragmentContainerView);
-
-                 */
+                if (searchQuestions.size() > 0){
+                    adapter.notifyDataSetChanged();
+                }
+                else {
+                    adapter.notifyDataSetChanged();
+                    DialogGoToChat dialogGoToChat = new DialogGoToChat(AskQuestionActivity.this);
+                    dialogGoToChat.create(R.id.fragmentContainerView);
+                }
             }
         });
 

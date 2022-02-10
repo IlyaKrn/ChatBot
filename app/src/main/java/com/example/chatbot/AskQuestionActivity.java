@@ -55,7 +55,7 @@ public class AskQuestionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 tvMaybe.setVisibility(View.VISIBLE);
-                searchQuestions = category.questions;
+                searchQuestions.addAll(category.questions);
                 adapter.notifyDataSetChanged();
                 /*
                 DialogGoToChat dialogGoToChat = new DialogGoToChat(AskQuestionActivity.this);

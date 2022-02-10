@@ -40,7 +40,6 @@ public class AskQuestionActivity extends AppCompatActivity {
     private QuestionAdapter adapter;
     private ArrayList<Question> searchQuestions = new ArrayList<>();
 
-    private ValueEventListener questionsListener;
     private ImageButton btMenu;
 
     @Override
@@ -61,7 +60,6 @@ public class AskQuestionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 tvMaybe.setVisibility(View.VISIBLE);
-                searchQuestions.clear();
                 searchQuestions.clear();
                 final String quest = etQuestion.getText().toString();
                 for (Question q : category.questions){

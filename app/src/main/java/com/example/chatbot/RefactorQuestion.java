@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.chatbot.adapters.QuestionAdapter;
+import com.example.chatbot.firebase.Category;
 import com.example.chatbot.firebase.Question;
 
 public class RefactorQuestion extends AppCompatActivity {
@@ -23,6 +25,7 @@ public class RefactorQuestion extends AppCompatActivity {
     private Button btRefactor;
     private Button btCancel;
     private Question question;
+    private Category category;
 
 
 
@@ -47,11 +50,17 @@ public class RefactorQuestion extends AppCompatActivity {
         btRefactor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /**
-                 *
-                 *
-                 *
-                 * */
+                for (int i = 0; i < Database.categories.size(); i++) {
+                    if (Database.categories.get(i).name.equals(category.name)){
+                        for (int j = 0; j < category.questions.size(); j++) {
+                            if (category.questions.get(j).question.equals(question.question)){
+                                Database.categories.get(i).questions.get(j).answer = etAnswer.getText().toString();
+                                Database.categories.get(i).questions.get(j).question = etQuestion.getText().toString();
+                                Log.wtf("kplk", "lk;l");
+                            }
+                        }
+                    }
+                }
             }
         });
 
@@ -98,6 +107,7 @@ public class RefactorQuestion extends AppCompatActivity {
     }
 
     private void init(){
+        category = (Category) getIntent().getSerializableExtra(Category.INTENT_CATEGORY);
         btBack = findViewById(R.id.bt_back);
         btRefactor = findViewById(R.id.bt_refactor);
         btCancel = findViewById(R.id.bt_cancel);

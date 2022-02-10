@@ -29,15 +29,17 @@ import java.util.ArrayList;
 
 import javax.xml.namespace.QName;
 
-public class DialogAddCategory extends Dialog {
+public class DialogAddQuestion extends Dialog {
 
     private Button addChat, cancel;
     private EditText etCategory;
+    private Category category;
 
-    public DialogAddCategory(AppCompatActivity activity) {
+    public DialogAddQuestion(AppCompatActivity activity, Category category) {
         super(activity);
+        this.category = category;
     }
-    public DialogAddCategory(Fragment fragment) {
+    public DialogAddQuestion(Fragment fragment) {
         super(fragment);
     }
 
@@ -55,13 +57,16 @@ public class DialogAddCategory extends Dialog {
                 // получение введенных данных
                 String cat = etCategory.getText().toString();
                 ArrayList<Question> arr = new ArrayList<>();
-                arr.add(new Question("ans", "quest"));
-                Category category = new Category(cat, arr);
+                Question question = new Question(cat, null);
                 // скрытие предупреждений о некорректных данных
 
                 // если поля ввода не пустые
                 if (category.name.length() > 0) {
-                    Database.categories.add(category);
+                    for (int i = 0; i < Database.categories.size(); i++) {
+                        if (Database.categories.get(i).name.equals(category.name)){
+                            Database.categories.get(i).questions.add(question);
+                        }
+                    }
                 }
                 destroy();
             }
@@ -72,6 +77,6 @@ public class DialogAddCategory extends Dialog {
                 destroy();
             }
         });
-       return super.onCreateView(inflater, container, savedInstanceState);
+        return super.onCreateView(inflater, container, savedInstanceState);
     }
 }

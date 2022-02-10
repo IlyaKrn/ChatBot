@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "879833819750",
-    "firebase_url": "https://chatbot-1a735-default-rtdb.firebaseio.com",
-    "project_id": "chatbot-1a735",
-    "storage_bucket": "chatbot-1a735.appspot.com"
+    "project_number": "213744594170",
+    "firebase_url": "https://chat-2f05f-default-rtdb.firebaseio.com",
+    "project_id": "chat-2f05f",
+    "storage_bucket": "chat-2f05f.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:879833819750:android:1c47e53804103e605fdba7",
+        "mobilesdk_app_id": "1:213744594170:android:9aac4d034ea195daedad43",
         "android_client_info": {
           "package_name": "com.example.chatbot"
         }
       },
       "oauth_client": [
         {
-          "client_id": "879833819750-va69eolrbcvjl6v2gpul3gcj90mior1c.apps.googleusercontent.com",
+          "client_id": "213744594170-v4t24pdm9g0tfni56rsfpm6t6e490bgd.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDFaRxI5NRQbuif3imQPQQn5lDD9STwb1M"
+          "current_key": "AIzaSyATJrzK4KAXfzcn6w8sVuR_a70CCIpexUg"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "879833819750-va69eolrbcvjl6v2gpul3gcj90mior1c.apps.googleusercontent.com",
+              "client_id": "213744594170-v4t24pdm9g0tfni56rsfpm6t6e490bgd.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

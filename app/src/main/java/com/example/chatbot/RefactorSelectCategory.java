@@ -12,6 +12,9 @@ import android.widget.ImageButton;
 import com.example.chatbot.adapters.QuestionAdapter;
 import com.example.chatbot.firebase.Category;
 import com.example.chatbot.firebase.Question;
+import com.example.chatbot.ui.DialogAddCategory;
+import com.example.chatbot.ui.DialogAddQuestion;
+import com.example.chatbot.ui.OnDestroyListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -41,10 +44,20 @@ public class RefactorSelectCategory extends AppCompatActivity {
         btAddQuestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /**
-                 *
-                 *
-                 * */
+                DialogAddQuestion dialog = new DialogAddQuestion(RefactorSelectCategory.this, category);
+                dialog.create(R.id.fragmentContainerView);
+                dialog.setOnDestroyListener(new OnDestroyListener() {
+                    @Override
+                    public void onDestroy() {
+                        for (int i = 0; i < Database.categories.size(); i++) {
+                            if (Database.categories.get(i).name.equals(category.name)){
+                                questions.clear();
+                                questions.addAll(Database.categories.get(i).questions);
+                                adapter.notifyDataSetChanged();
+                            }
+                        }
+                    }
+                });
             }
         });
     }
@@ -63,6 +76,7 @@ public class RefactorSelectCategory extends AppCompatActivity {
             public void onStateClick(Question question) {
                 Intent intent = new Intent(RefactorSelectCategory.this, RefactorQuestion.class);
                 intent.putExtra(Question.INTENT_QUESTION, question);
+                intent.putExtra(Category.INTENT_CATEGORY, category);
                 startActivity(intent);
             }
         });

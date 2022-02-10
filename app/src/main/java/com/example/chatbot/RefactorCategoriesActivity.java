@@ -8,11 +8,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.example.chatbot.adapters.CategoryAdapter;
 import com.example.chatbot.firebase.Category;
 import com.example.chatbot.ui.DialogAddCategory;
+import com.example.chatbot.ui.OnDestroyListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -27,7 +29,8 @@ public class RefactorCategoriesActivity extends AppCompatActivity {
     private RecyclerView rvCategories;
     private CategoryAdapter adapter;
     private ArrayList<Category> categories = new ArrayList<>();
-    private ValueEventListener categoryListener;
+
+    private Button btOften;
 
 
     @Override
@@ -47,16 +50,31 @@ public class RefactorCategoriesActivity extends AppCompatActivity {
             public void onClick(View view) {
                 DialogAddCategory dialog = new DialogAddCategory(RefactorCategoriesActivity.this);
                 dialog.create(R.id.fragmentContainerView);
+                dialog.setOnDestroyListener(new OnDestroyListener() {
+                    @Override
+                    public void onDestroy() {
+                        adapter.notifyDataSetChanged();
+                    }
+                });
+            }
+        });
+        btOften.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(RefactorCategoriesActivity.this, RefactorSelectCategory.class);
+                intent.putExtra(Category.INTENT_CATEGORY, new Category("often_questions", Database.oftenQuestions));
+                startActivity(intent);
             }
         });
     }
 
     private void init(){
+        btOften = findViewById(R.id.bt_often);
         btBack = findViewById(R.id.bt_back);
         fab = findViewById(R.id.fab_add_category);
         rvCategories = findViewById(R.id.rv_categories);
         rvCategories.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new CategoryAdapter(this, categories, new CategoryAdapter.OnCategoryClickListener() {
+        adapter = new CategoryAdapter(this, Database.categories, new CategoryAdapter.OnCategoryClickListener() {
             @Override
             public void onStateClick(Category category) {
                 Intent intent = new Intent(RefactorCategoriesActivity.this, RefactorSelectCategory.class);
@@ -65,30 +83,6 @@ public class RefactorCategoriesActivity extends AppCompatActivity {
             }
         });
         rvCategories.setAdapter(adapter);
-
-        categoryListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                categories.clear();
-                for (DataSnapshot s : snapshot.getChildren()){
-                    Category c = s.getValue(Category.class);
-                    assert c != null;
-                    categories.add(c);
-                }
-                adapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        };
-        Category.getDatabase().addValueEventListener(categoryListener);
     }
 
-    @Override
-    public void onDestroy() {
-        Category.getDatabase().removeEventListener(categoryListener);
-        super.onDestroy();
-    }
 }

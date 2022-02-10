@@ -38,6 +38,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
+
+        Database.oftenQuestions.add(new Question("sdds", "null"));
+        Database.oftenQuestions.add(new Question("sdds", "null"));
+        Database.oftenQuestions.add(new Question("sdds", "null"));
+        Database.oftenQuestions.add(new Question("sdds", "null"));
+
+        Database.categories.add(new Category("sdds", Database.oftenQuestions));
+        Database.categories.add(new Category("sdds", Database.oftenQuestions));
+        Database.categories.add(new Category("sdds", Database.oftenQuestions));
+        Database.categories.add(new Category("sdds", Database.oftenQuestions));
+
         Objects.requireNonNull(getSupportActionBar()).hide();
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());

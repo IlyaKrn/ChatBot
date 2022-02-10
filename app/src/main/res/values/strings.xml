@@ -21,4 +21,6 @@
     <string name="category">Категория</string>
     <string name="create">Создать</string>
     <string name="refactor">Сохранить</string>
+    <string name="categories">Категории</string>
+    <string name="questions">Вопросы</string>
 </resources>

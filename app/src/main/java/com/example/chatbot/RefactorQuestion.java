@@ -17,6 +17,8 @@ import com.example.chatbot.adapters.QuestionAdapter;
 import com.example.chatbot.firebase.Category;
 import com.example.chatbot.firebase.Question;
 
+import java.util.Objects;
+
 public class RefactorQuestion extends AppCompatActivity {
 
     private EditText etQuestion;
@@ -34,6 +36,7 @@ public class RefactorQuestion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_refactor_question);
         init();
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         btCancel.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
 
         Database.oftenQuestions.questions.add(new Question("sdds", "null"));

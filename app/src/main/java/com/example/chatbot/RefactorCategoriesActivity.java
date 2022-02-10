@@ -21,6 +21,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class RefactorCategoriesActivity extends AppCompatActivity {
 
@@ -38,6 +39,7 @@ public class RefactorCategoriesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_refactor_categories);
         init();
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         btBack.setOnClickListener(new View.OnClickListener() {
             @Override

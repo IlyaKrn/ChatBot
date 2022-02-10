@@ -17,6 +17,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.Objects;
+
 public class AdminLoginActivity extends AppCompatActivity {
 
     private EditText etLogin;
@@ -30,6 +32,7 @@ public class AdminLoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_login);
         init();
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         etLogin.setText("admin@gmail.com");
         etPassword.setText("111111");

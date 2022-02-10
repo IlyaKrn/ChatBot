@@ -23,6 +23,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class ChatActivity extends AppCompatActivity {
 
@@ -47,6 +48,8 @@ public class ChatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
         init();
+        Objects.requireNonNull(getSupportActionBar()).hide();
+
         ArrayList<Message> messages = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             messages.add(new Message("ds" + i, false));

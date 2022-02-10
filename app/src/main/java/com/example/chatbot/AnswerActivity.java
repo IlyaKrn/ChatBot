@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.example.chatbot.firebase.Question;
 
+import java.util.Objects;
+
 public class AnswerActivity extends AppCompatActivity {
 
     private ImageButton btBack;
@@ -26,6 +28,7 @@ public class AnswerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_answer);
         init();
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         btBack.setOnClickListener(new View.OnClickListener() {
             @Override

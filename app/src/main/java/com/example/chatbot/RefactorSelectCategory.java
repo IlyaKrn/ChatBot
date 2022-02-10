@@ -18,6 +18,7 @@ import com.example.chatbot.ui.OnDestroyListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class RefactorSelectCategory extends AppCompatActivity {
 
@@ -34,6 +35,7 @@ public class RefactorSelectCategory extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_refactor_select_category);
         init();
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         btBack.setOnClickListener(new View.OnClickListener() {
             @Override

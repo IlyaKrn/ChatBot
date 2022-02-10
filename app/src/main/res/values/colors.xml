@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="tool_bar">#81C784</color>
     <color name="button">#388E3C</color>
+    <color name="invisible">#00B38582</color>
 </resources>

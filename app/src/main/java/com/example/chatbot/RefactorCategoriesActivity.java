@@ -1,69 +1,68 @@
-package com.example.chatbot.ui.dashboard;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+package com.example.chatbot;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.chatbot.AskQuestionActivity;
-import com.example.chatbot.firebase.Category;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
+
 import com.example.chatbot.adapters.CategoryAdapter;
-import com.example.chatbot.databinding.FragmentDashboardBinding;
+import com.example.chatbot.firebase.Category;
+import com.example.chatbot.ui.DialogAddCategory;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
-public class DashboardFragment extends Fragment {
+public class RefactorCategoriesActivity extends AppCompatActivity {
 
-    private DashboardViewModel dashboardViewModel;
-    private FragmentDashboardBinding binding;
+    private ImageButton btBack;
+    private FloatingActionButton fab;
     private RecyclerView rvCategories;
     private CategoryAdapter adapter;
     private ArrayList<Category> categories = new ArrayList<>();
-
     private ValueEventListener categoryListener;
 
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        dashboardViewModel = new ViewModelProvider(this).get(DashboardViewModel.class);
-        binding = FragmentDashboardBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
-        init();
-
-
-
-
-
-
-        return root;
-    }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_refactor_categories);
+        init();
+
+        btBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DialogAddCategory dialog = new DialogAddCategory(RefactorCategoriesActivity.this);
+                dialog.create(R.id.fragmentContainerView);
+            }
+        });
     }
+
     private void init(){
-        rvCategories = binding.rvCategories;
-        rvCategories.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new CategoryAdapter(getContext(), categories, new CategoryAdapter.OnCategoryClickListener() {
+        btBack = findViewById(R.id.bt_back);
+        fab = findViewById(R.id.fab_add_category);
+        rvCategories = findViewById(R.id.rv_categories);
+        rvCategories.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new CategoryAdapter(this, categories, new CategoryAdapter.OnCategoryClickListener() {
             @Override
             public void onStateClick(Category category) {
-                Intent intent = new Intent(getActivity(), AskQuestionActivity.class);
-                intent.putExtra(Category.INTENT_CATEGORY, (Serializable) category);
-                startActivity(intent);
+
             }
         });
         rvCategories.setAdapter(adapter);
+
         categoryListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

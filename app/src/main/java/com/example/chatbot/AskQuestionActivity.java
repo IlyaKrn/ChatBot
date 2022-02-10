@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,6 +22,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -55,7 +57,13 @@ public class AskQuestionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 tvMaybe.setVisibility(View.VISIBLE);
+                searchQuestions.clear();
                 searchQuestions.addAll(category.questions);
+
+                for (Question q : searchQuestions){
+                    Log.e(q.answer, q.question);
+                }
+
                 adapter.notifyDataSetChanged();
                 /*
                 DialogGoToChat dialogGoToChat = new DialogGoToChat(AskQuestionActivity.this);
@@ -80,7 +88,8 @@ public class AskQuestionActivity extends AppCompatActivity {
             @Override
             public void onStateClick(Question question) {
                 Intent intent = new Intent(AskQuestionActivity.this, AnswerActivity.class);
-                intent.putExtra(Question.INTENT_QUESTION, question);
+                intent.putExtra(Question.INTENT_QUESTION, (Serializable) question);
+                Log.e("fgdf", question.answer + " " + question.question);
                 startActivity(intent);
             }
         });

@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), "news", Toast.LENGTH_SHORT).show();
                                 break;
                             case R.id.i_is_admin:
-                                Intent intent = new Intent(MainActivity.this, AuthActivity.class);
+                                Intent intent = new Intent(MainActivity.this, AdminLoginActivity.class);
                                 startActivity(intent);
                                 break;
                         }

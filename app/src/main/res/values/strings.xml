@@ -14,4 +14,10 @@
     <string name="cancel">Отмена</string>
     <string name="answer_not_find">Ответ ненайден</string>
     <string name="not_find_descripion">На Ваш вопрос небыл найден ответ\nвы можете задать его администратору в чате</string>
+    <string name="enter">Вход</string>
+    <string name="login">Логин</string>
+    <string name="password">Пароль</string>
+    <string name="sign_in">Войти как администратор</string>
+    <string name="category">Категория</string>
+    <string name="create">Создать</string>
 </resources>

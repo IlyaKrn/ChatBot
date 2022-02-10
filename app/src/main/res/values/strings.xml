@@ -23,4 +23,7 @@
     <string name="refactor">Сохранить</string>
     <string name="categories">Категории</string>
     <string name="questions">Вопросы</string>
+    <string name="new_question">Новый\nвопрос</string>
+    <string name="new_category">Новая\nкатегория</string>
+    <string name="question">Вопрос</string>
 </resources>

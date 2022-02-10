@@ -46,7 +46,7 @@ public class DialogAddQuestion extends Dialog {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.dialog_add_chat, container, false);
+        rootView = inflater.inflate(R.layout.dialog_add_question, container, false);
         addChat = rootView.findViewById(R.id.bt_create);
         cancel = rootView.findViewById(R.id.bt_cancel);
         etCategory = rootView.findViewById(R.id.et_category);

@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">ChatBot</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_dashboard">Категории</string>
+    <string name="title_notifications">Частые</string>
     <string name="news">Новости</string>
     <string name="i_is_admin">Я администратор</string>
     <string name="select_category">Выбрите категорию</string>

@@ -20,4 +20,5 @@
     <string name="sign_in">Войти как администратор</string>
     <string name="category">Категория</string>
     <string name="create">Создать</string>
+    <string name="refactor">Изменить</string>
 </resources>

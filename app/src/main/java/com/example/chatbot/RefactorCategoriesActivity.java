@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -58,7 +59,9 @@ public class RefactorCategoriesActivity extends AppCompatActivity {
         adapter = new CategoryAdapter(this, categories, new CategoryAdapter.OnCategoryClickListener() {
             @Override
             public void onStateClick(Category category) {
-
+                Intent intent = new Intent(RefactorCategoriesActivity.this, RefactorSelectCategory.class);
+                intent.putExtra(Category.INTENT_CATEGORY, category);
+                startActivity(intent);
             }
         });
         rvCategories.setAdapter(adapter);

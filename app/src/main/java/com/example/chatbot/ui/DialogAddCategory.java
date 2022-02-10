@@ -58,13 +58,10 @@ public class DialogAddCategory extends Dialog {
 
                 // если поля ввода не пустые
                 if (category.name.length() > 0) {
-                        FirebaseDatabase.getInstance().getReference(  "ghfgj").child(" jjjj").setValue(category).addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                destroy();
-                            }
-                        });
-
+                    /**
+                     *
+                     *
+                     * */
                 }
             }
         });
